@@ -7,14 +7,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -72,6 +76,16 @@ public class WisdomFragment extends Fragment {
                         Toast.makeText(mContext,"将在"+6*(m-c)+"分钟后提醒您",Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+        ConstraintLayout layout= (ConstraintLayout)view.findViewById(R.id.wisdom);
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) mContext
+                        .getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getActivity().getWindow().getDecorView().getWindowToken(), 0);
+                return false;
             }
         });
         return  view;
