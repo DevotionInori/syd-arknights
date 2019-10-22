@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,13 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private List<employee> employees = new ArrayList<employee>();
     private TextView last;
-    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         init();
         setStatusBar();
@@ -79,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
+
         helper = new RecordDataBaseHelper(this,"Record",null,1);
         db=helper.getWritableDatabase();
         clear = (Button)findViewById(R.id.clear);
@@ -104,9 +104,6 @@ public class MainActivity extends AppCompatActivity {
             c.moveToNext();
         }
 
-        ViewGroup.LayoutParams params = navigationView.getLayoutParams();
-        params.width = getResources().getDisplayMetrics().widthPixels * 2 / 3;
-        navigationView.setLayoutParams(params);
 
     }
 
@@ -142,5 +139,6 @@ public class MainActivity extends AppCompatActivity {
     public Activity getActivity() {
         return MainActivity.this;
     }
+
 
 }
