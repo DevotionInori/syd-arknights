@@ -40,7 +40,6 @@ public class AutoReceiver extends BroadcastReceiver {
                     .setAutoCancel(false)//通知自动消失
                     .setSmallIcon(R.drawable.ifrit)//通知在状态栏上显示的小图标
                     .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.drawable.ifrit))//通知显示的大图标
-                    .setFullScreenIntent(pendingIntent,true)//通知设置为悬挂式，Android8.0后不用设置这个也可以，只需要频道优先级高即可
                     .setDefaults(NotificationCompat.DEFAULT_ALL)//通知声音震动设置为默认
                     .setPriority(NotificationCompat.PRIORITY_HIGH)//通知优先级
                     .setCategory(Notification.CATEGORY_MESSAGE)//通知类型 无所谓，不写也行
