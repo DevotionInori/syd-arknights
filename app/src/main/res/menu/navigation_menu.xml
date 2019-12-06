@@ -11,6 +11,11 @@
             android:id="@+id/action_wisdom"
             android:orderInCategory="100"
             android:title="理智恢复提醒" />
+
+        <item
+            android:id="@+id/action_map"
+            android:orderInCategory="100"
+            android:title="寻访地图"/>
     </group>
 
 </menu>

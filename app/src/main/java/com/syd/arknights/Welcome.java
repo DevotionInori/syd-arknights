@@ -44,6 +44,11 @@ public class Welcome extends AppCompatActivity {
                         menuItem.setChecked(true);
                         draw.closeDrawer(GravityCompat.START);
                         break;
+                    case R.id.action_map:
+                        changeFragment(new MapFragment());
+                        menuItem.setChecked(true);
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
                     default:
                         break;
                 }
@@ -64,7 +69,7 @@ public class Welcome extends AppCompatActivity {
     private void changeFragment(Fragment fragment){
         //实例化碎片管理器对象
         FragmentManager fm=getSupportFragmentManager();
-        FragmentTransaction ft=fm.beginTransaction();
+        FragmentTransaction ft=fm.beginTransaction().setCustomAnimations(R.anim.slide_top_enter,R.anim.slide_down_exit);
         //选择fragment替换的部分
         ft.replace(R.id.welContent,fragment);
         ft.commit();
